@@ -1,0 +1,91 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    
+}
+
+<div class="d-flex bd-highlight">
+  <div class="vertical-nav p-2  p-2 bd-highlight" id="sidebar">
+    
+    <div class="logo">
+      <a class="navbar-brand" href="#" >
+        MySpotify
+      </a>
+    </div>
+
+    <div class="itens-home">
+      <ul class="nav flex-column mb-0">
+        <li class="nav-item">
+          <a href="#" class="nav-link text-light">
+            Inicio
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link text-light">
+            Buscar
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link text-light">
+            Suas playlist
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark" asp-area="" asp-controller="Spotify" asp-action="Index">Upload</a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="p-2 flex-grow-1 bd-highligh">
+    
+    <div class="d-flex justify-content-center">
+      <div class="text-center" id="titulo">
+        <p>
+          <h1>Minhas músicas</h1>
+          <div class="myMusics">
+              <ul class="list-group">
+                @foreach(var m in ViewBag.musicas ){
+                <li class="list-group-item">
+                    
+                  <div>
+                    <div class="column text-left">
+                      <div class="">
+                          Gênero: @m.Genero  
+                        </div>
+                        <div class="">
+                          Album: @m.Album
+                        </div>
+                        <div class="">
+                          Artista: @m.Artista
+                        </div>
+                        <div class="">
+                          Titulo: @m.Titulo
+                        </div>
+                    </div>
+
+                    <div class="row d-block text-center">
+                      <div clas="col-12">
+                        <audio controls autoplay>
+      
+                            <source src= "/musicas/Artista/@m.Artista/@m.Album/@m.UrlStr" type="audio/mpeg">
+                                Seu navegador não suporta audio.
+                        </audio>
+                      </div>
+                    </div>
+
+                  </div>
+                </li>
+                }
+              </ul>
+          </div>
+          
+        </p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
